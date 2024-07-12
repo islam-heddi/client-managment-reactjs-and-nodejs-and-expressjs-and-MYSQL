@@ -5,6 +5,17 @@ function Create(props){
     const [firstname,setFirstname] = useState("")
     const [familyname,setFamilyname] = useState("")
     const [email,setEmail] = useState("")
+    const [id,setId] = useState(15)
+
+    const [information,setInformation] = useState(
+        {
+            id:id,
+            firstname:firstname,
+            familyname:familyname,
+            email:email
+        }
+    )
+    
 
     const handlefname = (e) => {
         setFirstname(e.target.value)
@@ -18,9 +29,21 @@ function Create(props){
         setEmail(e.target.value)
     }
 
-    const handleSubmit = () => {
-
-    }
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+      /*  setInformation({
+            id:id,
+            firstname:firstname,
+            familyname:familyname,
+            email:email
+        })*/
+        axios.post("http://localhost:5000/adduser",{id:id,
+            firstname:firstname,
+            familyname:familyname,
+            email:email})
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
+    }       
 
     const handleRewind = () => {
         props.setPage("Client")
@@ -30,6 +53,7 @@ function Create(props){
             <button onClick={handleRewind}>Rewind</button>
             <form onSubmit={handleSubmit}>
                 <table>
+                    <tbody>
                     <tr>
                         <td>
                             First name :
@@ -54,11 +78,12 @@ function Create(props){
                             <input type="text" value={email} onChange={(e) => handleEmail(e)} name="Email" />
                         </td>
                     </tr>
-                    <button>
+                    </tbody>
+                </table>
+                    <button type="submit">
                         Submit
                     </button>
                     <button type="reset">Reset</button>
-                </table>
             </form>
         </div>
     )
