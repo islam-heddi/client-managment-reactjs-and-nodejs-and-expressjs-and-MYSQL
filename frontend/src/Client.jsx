@@ -18,6 +18,13 @@ function Client(props){
     const handleCreate = () => {
         props.setPage("Create")
     }
+    const handleDelete = (e) => {
+        const thisid = e.target.value;
+        axios.delete(`http://localhost:5000/deleteuser/${thisid}`)
+        .then(response => console.log(response))
+        .catch(error => console.log(error))
+        location.reload()
+    }
     return(
         <div>
             <button onClick={handleCreate}>Create ++</button>
@@ -34,6 +41,7 @@ function Client(props){
                                         <td>{user.fname}</td>
                                         <td>{user.famname}</td>
                                         <td>{user.email}</td>
+                                        <td><button value={user.id} onClick={(e) => handleDelete(e)}>delete</button></td>
                                         </tr>)}
                 </tbody>
             </table>

@@ -5,17 +5,7 @@ function Create(props){
     const [firstname,setFirstname] = useState("")
     const [familyname,setFamilyname] = useState("")
     const [email,setEmail] = useState("")
-    const [id,setId] = useState(15)
-
-    const [information,setInformation] = useState(
-        {
-            id:id,
-            firstname:firstname,
-            familyname:familyname,
-            email:email
-        }
-    )
-    
+    const [id,setId] = useState(100)
 
     const handlefname = (e) => {
         setFirstname(e.target.value)
@@ -31,18 +21,13 @@ function Create(props){
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-      /*  setInformation({
-            id:id,
-            firstname:firstname,
-            familyname:familyname,
-            email:email
-        })*/
         axios.post("http://localhost:5000/adduser",{id:id,
             firstname:firstname,
             familyname:familyname,
             email:email})
         .then(response => console.log(response))
         .catch(err => console.log(err))
+        props.setPage("Client")
     }       
 
     const handleRewind = () => {
