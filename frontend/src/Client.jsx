@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
-function Client(){
+function Client(props){
     const [client,setClient] = useState([])
     useEffect(() => {
         axios.get('http://localhost:5000/')
@@ -8,14 +8,19 @@ function Client(){
             (Response) => {
                 console.log(Response)
                 setClient(Response.data)
+                props.setData(client)
             }
         )
         .catch((Error) => {
             console.log(Error)
         })
     },[])
+    const handleCreate = () => {
+        props.setPage("Create")
+    }
     return(
         <div>
+            <button onClick={handleCreate}>Create ++</button>
             <table>
                 <tbody>
                 <tr>
