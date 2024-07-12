@@ -25,6 +25,11 @@ function Client(props){
         .catch(error => console.log(error))
         location.reload()
     }
+
+    const handleModify = (e) => {
+
+    }
+    
     return(
         <div>
             <button onClick={handleCreate}>Create ++</button>
@@ -42,6 +47,7 @@ function Client(props){
                                         <td>{user.famname}</td>
                                         <td>{user.email}</td>
                                         <td><button value={user.id} onClick={(e) => handleDelete(e)}>delete</button></td>
+                                        <td><button value={user.id} onClick={(e) => handleModify(e)}>Modify</button></td>
                                         </tr>)}
                 </tbody>
             </table>
