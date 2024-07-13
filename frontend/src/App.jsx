@@ -4,10 +4,12 @@ import React,{ useState } from "react"
 function App() {
   const [data,setData] = useState([])
   const [page,setPage] = useState("Client")
+  
   return (
     <>
      {
-      page == "Client"? <Client setPage={setPage} setData={setData}/> : <Create setPage={setPage} data={data} /> 
+      page == "Client"? <Client page={page} setPage={setPage} setData={setData}/> : <Create setPage={setPage} data={data} /> 
+
      }
       
     </>
