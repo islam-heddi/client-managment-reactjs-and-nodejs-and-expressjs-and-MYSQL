@@ -5,7 +5,17 @@ function Create(props){
     const [firstname,setFirstname] = useState("")
     const [familyname,setFamilyname] = useState("")
     const [email,setEmail] = useState("")
-    const [id,setId] = useState(100)
+    const [id,setId] = useState(120)
+
+    const MaxIdNum = (d) => {
+        let max = 20;
+        for(let i = 0; i < d.length;i++){
+            if(max < d[i].id){
+                max = d[i].id
+            }
+        }
+        return max;
+    }
 
     const handlefname = (e) => {
         setFirstname(e.target.value)
@@ -21,18 +31,23 @@ function Create(props){
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        axios.post("http://localhost:5000/adduser",{id:id,
+        console.log(props.data)
+        //console.log(MaxIdNum(props.data))
+        setId(MaxIdNum(props.data) + 1)
+        axios.post("http://localhost:5000/adduser",{
+            id:id,
             firstname:firstname,
             familyname:familyname,
             email:email})
         .then(response => console.log(response))
         .catch(err => console.log(err))
         props.setPage("Client")
-    }       
+    }
 
     const handleRewind = () => {
         props.setPage("Client")
     }
+
     return(
         <div>
             <button onClick={handleRewind}>Rewind</button>

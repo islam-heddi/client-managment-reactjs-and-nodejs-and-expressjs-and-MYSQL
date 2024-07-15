@@ -3,14 +3,13 @@ import axios from 'axios'
 import Modify from './Modify'
 function Client(props){
     const [client,setClient] = useState([])
-    const [UserToModify,setUserToModify] = useState(0)
     useEffect(() => {
         axios.get('http://localhost:5000/')
         .then(
             (Response) => {
                 console.log(Response)
                 setClient(Response.data)
-                props.setData(client)
+                props.setData(Response.data)
             }
         )
         .catch((Error) => {
@@ -30,11 +29,11 @@ function Client(props){
 
     const handleModify = (e) => {
         props.setPage("modify")
-        setUserToModify(e.target.value)
+        props.setUserToModify(e.target.value)
     }
     
-    const users = 
-    <div>
+    return(
+        <div>
         <button onClick={handleCreate}>Create ++</button>
         <table>
             <tbody>
@@ -55,9 +54,6 @@ function Client(props){
             </tbody>
         </table>
     </div>
-
-    return(
-        props.page == "modify" ? <Modify UserToModify={UserToModify}/> : users
     )
 }
 
