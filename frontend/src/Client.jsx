@@ -48,7 +48,7 @@ function Client(props){
                                     <td>{user.fname}</td>
                                     <td>{user.famname}</td>
                                     <td>{user.email}</td>
-                                    <td><button value={user.id} onClick={(e) => handleDelete(e)}>delete</button></td>
+                                    <td><button className='del' value={user.id} onClick={(e) => handleDelete(e)}>delete</button></td>
                                     <td><button value={user.id} onClick={(e) => handleModify(e)}>Modify</button></td>
                                     </tr>)}
             </tbody>

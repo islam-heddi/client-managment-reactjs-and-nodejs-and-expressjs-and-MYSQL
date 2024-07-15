@@ -1,3 +1,55 @@
 *{
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+body{
+  background-color: greenyellow;
+  
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  overflow-y:hidden;
+}
+
+main{
+  padding: 20px;
+  border-radius: 12px;
+  background-color: white;
+}
+
+table{
+  border: 1px solid black;
+  border-radius: 10px;
+  border-collapse: collapse;
+  padding: 12px;
+}
+
+td{
+  border: 1px solid black;
+  padding: 19px;
+}
+
+button{
+  padding: 10px;
+  background-color: rgb(160, 219, 255);
+  color: white;
+  border: 1px white solid;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover{
+  background-color: rgba(160, 219, 255, 0.422);
+}
+
+input{
+  padding: 10px;
+}
+
+.del{
+  background-color: rgb(255, 127, 127);
+}
+
+.del:hover{
+  background-color: rgba(255, 127, 127, 0.51);
+}

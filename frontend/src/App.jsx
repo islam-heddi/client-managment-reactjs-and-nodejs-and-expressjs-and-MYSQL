@@ -9,15 +9,14 @@ function App() {
 
   
   return (
-    <>
+    <main>
      {
-     // page == "Client"? <Client page={page} setPage={setPage} setData={setData}/> : <Create setPage={setPage} data={data} /> 
           page == "Client" ? 
            <Client page={page} setUserToModify={setUserToModify} setPage={setPage} setData={setData}/>
            : page == "modify" ? <Modify UserToModify={UserToModify} setPage={setPage}/>
           : <Create setPage={setPage} data={data} /> 
      }
-    </>
+    </main>
   )
 }
 
